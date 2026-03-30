@@ -1281,75 +1281,79 @@ class Dps implements DpsInterface
             }
             // TODO: Implementar grupo imovel em IBSCBS.
 
-            if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs)) {
+            if (isset($this->std->infdps->ibscbs->valores)) {
                 $ibscbs_valores_inner = $this->dom->createElement('valores');
                 $ibscbs_inner->appendChild($ibscbs_valores_inner);
+
+                if (isset($this->std->infdps->ibscbs->valores->greerepres)) {
+                    // TODO: Implementar grupo gReeRepRes em IBSCBS.
+                }
 
                 $ibscbs_valores_trib_inner = $this->dom->createElement('trib');
                 $ibscbs_valores_inner->appendChild($ibscbs_valores_trib_inner);
 
+                $ibscbs_valores_trib_gibscbs = $this->std->infdps->ibscbs->valores->trib->gibscbs;
                 $ibscbs_valores_trib_gibscbs_inner = $this->dom->createElement('gIBSCBS');
                 $ibscbs_valores_trib_inner->appendChild($ibscbs_valores_trib_gibscbs_inner);
                 $this->dom->addChild(
                     $ibscbs_valores_trib_gibscbs_inner,
                     'CST',
-                    $this->std->infdps->ibscbs->valores->trib->gibscbs->cst,
+                    $ibscbs_valores_trib_gibscbs->cst,
                     true
                 );
                 $this->dom->addChild(
                     $ibscbs_valores_trib_gibscbs_inner,
                     'cClassTrib',
-                    $this->std->infdps->ibscbs->valores->trib->gibscbs->cclasstrib,
+                    $ibscbs_valores_trib_gibscbs->cclasstrib,
                     true
                 );
                 if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->ccredpres)) {
                     $this->dom->addChild(
                         $ibscbs_valores_trib_gibscbs_inner,
                         'cCredPres',
-                        $this->std->infdps->ibscbs->valores->trib->gibscbs->ccredpres
+                        $ibscbs_valores_trib_gibscbs->ccredpres
                     );
                 }
 
-                if (isset($this->std->infdps->ibscbs->valores->trib->gtribregular)) {
+                if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gtribregular)) {
                     $ibscbs_valores_trib_gtribregular_inner = $this->dom->createElement('gTribRegular');
-                    $ibscbs_valores_trib_inner->appendChild($ibscbs_valores_trib_gtribregular_inner);
+                    $ibscbs_valores_trib_gibscbs_inner->appendChild($ibscbs_valores_trib_gtribregular_inner);
                     $this->dom->addChild(
                         $ibscbs_valores_trib_gtribregular_inner,
                         'CSTReg',
-                        $this->std->infdps->ibscbs->valores->trib->gtribregular->cstreg,
+                        $ibscbs_valores_trib_gibscbs->gtribregular->cstreg,
                         true
                     );
                     $this->dom->addChild(
                         $ibscbs_valores_trib_gtribregular_inner,
                         'cClassTribReg',
-                        $this->std->infdps->ibscbs->valores->trib->gtribregular->cclasstribreg,
+                        $ibscbs_valores_trib_gibscbs->gtribregular->cclasstribreg,
                         true
                     );
                 }
 
-                if (isset($this->std->infdps->ibscbs->valores->trib->gdif)) {
+                if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gdif)) {
                     $ibscbs_valores_trib_gdif_inner = $this->dom->createElement('gDif');
-                    $ibscbs_valores_trib_inner->appendChild($ibscbs_valores_trib_gdif_inner);
+                    $ibscbs_valores_trib_gibscbs_inner->appendChild($ibscbs_valores_trib_gdif_inner);
                     $this->dom->addChild(
                         $ibscbs_valores_trib_gdif_inner,
                         'pDifUF',
-                        $this->std->infdps->ibscbs->valores->trib->gdif->pdifuf,
+                        $ibscbs_valores_trib_gibscbs->gdif->pdifuf,
                         true
                     );
                     $this->dom->addChild(
                         $ibscbs_valores_trib_gdif_inner,
                         'pDifMun',
-                        $this->std->infdps->ibscbs->valores->trib->gdif->pdifmun,
+                        $ibscbs_valores_trib_gibscbs->gdif->pdifmun,
                         true
                     );
                     $this->dom->addChild(
                         $ibscbs_valores_trib_gdif_inner,
                         'pDifCBS',
-                        $this->std->infdps->ibscbs->valores->trib->gdif->pdifcbs,
+                        $ibscbs_valores_trib_gibscbs->gdif->pdifcbs,
                         true
                     );
                 }
-                // TODO: Implementar grupo gReeRepRes em IBSCBS.
             }
         }
 
