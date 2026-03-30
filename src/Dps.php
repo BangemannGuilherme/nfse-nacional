@@ -1292,67 +1292,84 @@ class Dps implements DpsInterface
                 $ibscbs_valores_trib_inner = $this->dom->createElement('trib');
                 $ibscbs_valores_inner->appendChild($ibscbs_valores_trib_inner);
 
-                $ibscbs_valores_trib_gibscbs = $this->std->infdps->ibscbs->valores->trib->gibscbs;
-                $ibscbs_valores_trib_gibscbs_inner = $this->dom->createElement('gIBSCBS');
-                $ibscbs_valores_trib_inner->appendChild($ibscbs_valores_trib_gibscbs_inner);
-                $this->dom->addChild(
-                    $ibscbs_valores_trib_gibscbs_inner,
-                    'CST',
-                    $ibscbs_valores_trib_gibscbs->cst,
-                    true
-                );
-                $this->dom->addChild(
-                    $ibscbs_valores_trib_gibscbs_inner,
-                    'cClassTrib',
-                    $ibscbs_valores_trib_gibscbs->cclasstrib,
-                    true
-                );
-                if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->ccredpres)) {
-                    $this->dom->addChild(
-                        $ibscbs_valores_trib_gibscbs_inner,
-                        'cCredPres',
-                        $ibscbs_valores_trib_gibscbs->ccredpres
-                    );
-                }
+                if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs)) {
+                    $ibscbs_valores_trib_gibscbs = $this->std->infdps->ibscbs->valores->trib->gibscbs;
+                    $ibscbs_valores_trib_gibscbs_inner = $this->dom->createElement('gIBSCBS');
+                    $ibscbs_valores_trib_inner->appendChild($ibscbs_valores_trib_gibscbs_inner);
 
-                if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gtribregular)) {
-                    $ibscbs_valores_trib_gtribregular_inner = $this->dom->createElement('gTribRegular');
-                    $ibscbs_valores_trib_gibscbs_inner->appendChild($ibscbs_valores_trib_gtribregular_inner);
-                    $this->dom->addChild(
-                        $ibscbs_valores_trib_gtribregular_inner,
-                        'CSTReg',
-                        $ibscbs_valores_trib_gibscbs->gtribregular->cstreg,
-                        true
-                    );
-                    $this->dom->addChild(
-                        $ibscbs_valores_trib_gtribregular_inner,
-                        'cClassTribReg',
-                        $ibscbs_valores_trib_gibscbs->gtribregular->cclasstribreg,
-                        true
-                    );
-                }
+                    if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->cst)) {
+                        $this->dom->addChild(
+                            $ibscbs_valores_trib_gibscbs_inner,
+                            'CST',
+                            $ibscbs_valores_trib_gibscbs->cst,
+                            true
+                        );
+                    }
+                    if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->cclasstrib)) {
+                        $this->dom->addChild(
+                            $ibscbs_valores_trib_gibscbs_inner,
+                            'cClassTrib',
+                            $ibscbs_valores_trib_gibscbs->cclasstrib,
+                            true
+                        );
+                    }
+                    if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->ccredpres)) {
+                        $this->dom->addChild(
+                            $ibscbs_valores_trib_gibscbs_inner,
+                            'cCredPres',
+                            $ibscbs_valores_trib_gibscbs->ccredpres
+                        );
+                    }
 
-                if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gdif)) {
-                    $ibscbs_valores_trib_gdif_inner = $this->dom->createElement('gDif');
-                    $ibscbs_valores_trib_gibscbs_inner->appendChild($ibscbs_valores_trib_gdif_inner);
-                    $this->dom->addChild(
-                        $ibscbs_valores_trib_gdif_inner,
-                        'pDifUF',
-                        $ibscbs_valores_trib_gibscbs->gdif->pdifuf,
-                        true
-                    );
-                    $this->dom->addChild(
-                        $ibscbs_valores_trib_gdif_inner,
-                        'pDifMun',
-                        $ibscbs_valores_trib_gibscbs->gdif->pdifmun,
-                        true
-                    );
-                    $this->dom->addChild(
-                        $ibscbs_valores_trib_gdif_inner,
-                        'pDifCBS',
-                        $ibscbs_valores_trib_gibscbs->gdif->pdifcbs,
-                        true
-                    );
+                    if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gtribregular)) {
+                        $ibscbs_valores_trib_gtribregular_inner = $this->dom->createElement('gTribRegular');
+                        $ibscbs_valores_trib_gibscbs_inner->appendChild($ibscbs_valores_trib_gtribregular_inner);
+                        if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gtribregular->cstreg)) {
+                            $this->dom->addChild(
+                                $ibscbs_valores_trib_gtribregular_inner,
+                                'CSTReg',
+                                $ibscbs_valores_trib_gibscbs->gtribregular->cstreg,
+                                true
+                            );
+                        }
+                        if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gtribregular->cclasstribreg)) {
+                            $this->dom->addChild(
+                                $ibscbs_valores_trib_gtribregular_inner,
+                                'cClassTribReg',
+                                $ibscbs_valores_trib_gibscbs->gtribregular->cclasstribreg,
+                                true
+                            );
+                        }
+                    }
+
+                    if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gdif)) {
+                        $ibscbs_valores_trib_gdif_inner = $this->dom->createElement('gDif');
+                        $ibscbs_valores_trib_gibscbs_inner->appendChild($ibscbs_valores_trib_gdif_inner);
+                        if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gdif->pdifuf)) {
+                            $this->dom->addChild(
+                                $ibscbs_valores_trib_gdif_inner,
+                                'pDifUF',
+                                $ibscbs_valores_trib_gibscbs->gdif->pdifuf,
+                                true
+                            );
+                        }
+                        if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gdif->pdifmun)) {
+                            $this->dom->addChild(
+                                $ibscbs_valores_trib_gdif_inner,
+                                'pDifMun',
+                                $ibscbs_valores_trib_gibscbs->gdif->pdifmun,
+                                true
+                            );
+                        }
+                        if (isset($this->std->infdps->ibscbs->valores->trib->gibscbs->gdif->pdifcbs)) {
+                            $this->dom->addChild(
+                                $ibscbs_valores_trib_gdif_inner,
+                                'pDifCBS',
+                                $ibscbs_valores_trib_gibscbs->gdif->pdifcbs,
+                                true
+                            );
+                        }
+                    }
                 }
             }
         }
